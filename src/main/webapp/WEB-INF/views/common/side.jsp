@@ -74,7 +74,7 @@
 			<div class="title">생산관리</div>
 			<ul class="subMenu">
                 <li><a href="${contextPath}/ProductPlanning.do">생산계획등록</a></li>
-                <li><a href="#">작업지시등록</a></li>
+                <li><a href="${contextPath}/RegistDirection.do">작업지시등록</a></li>
                 <li><a href="#">작업지시확정</a></li>
                 <li><a href="#">생산자재출고</a></li>
                 <li><a href="#">작업실적등록</a></li>
