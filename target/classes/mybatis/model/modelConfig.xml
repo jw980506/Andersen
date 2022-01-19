@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.andersen.mes.product.ProductPlanning.vo.ProductPlanning_VO"  alias="productplanning_vo" />
+		<typeAlias type="com.andersen.mes.product.ProductPlanning.dto.ProductPlanning_DTO"  alias="productplanning_dto" />
+	</typeAliases>
+</configuration>

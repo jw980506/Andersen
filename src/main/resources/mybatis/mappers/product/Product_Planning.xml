@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.productplanning">
+	
+	<resultMap id="ProductPlanning_Item_List_Result" type="productplanning_vo" >
+      <result property="pp_NO" column="pp_NO" /> <!-- 생산계획 번호 -->
+      <result property="itemNO" column="itemNO" /> <!-- 품번 -->
+      <result property="item_Name" column="item_Name" /> <!-- 품명 -->
+      <result property="stockUnit" column="stockUnit" /> <!-- 단위 -->
+      <result property="dayProduction" column="dayProduction" /> <!-- 일 생산량 -->
+      <result property="pp_Sequence" column="pp_Sequence" /> <!-- 순서 -->
+      <result property="pp_Schedule" column="pp_Schedule" /> <!-- 작업예정일 -->
+      <result property="pp_Quantity" column="pp_Quantity" /> <!-- 수량 -->
+      <result property="emp_Name" column="emp_Name" /> <!-- 담당자 -->
+    </resultMap> 
+    
+    <resultMap id="ProductPlanning_Plan_List_Result" type="productplanning_dto" >
+      <result property="pp_NO" column="pp_NO" /> <!-- 생산계획 번호 -->
+      <result property="itemNO" column="itemNO" /> <!-- 품번 -->
+      <result property="item_Name" column="item_Name" /> <!-- 품명 -->
+      <result property="stockUnit" column="stockUnit" /> <!-- 단위 -->
+      <result property="dayProduction" column="dayProduction" /> <!-- 일 생산량 -->
+      <result property="pp_Sequence" column="pp_Sequence" /> <!-- 순서 -->
+      <result property="pp_Schedule" column="pp_Schedule" /> <!-- 작업예정일 -->
+      <result property="pp_Quantity" column="pp_Quantity" /> <!-- 수량 -->
+      <result property="emp_Name" column="emp_Name" /> <!-- 담당자 -->
+    </resultMap>
+	
+	<select id="Find_ProductPlanning_ItemList_All" resultMap="ProductPlanning_Item_List_Result">
+      <![CDATA[
+         select ItemNO, Item_Name, StockUnit, dayProduction from Item order by ItemNO 
+      ]]>
+	</select>
+	
+	<select id="Total_Plan_List" resultMap="ProductPlanning_Plan_List_Result">
+      <![CDATA[
+         select * from Production_Planning 
+      ]]>
+	</select>
+	
+	<select id="Find_ProductPlanning_Item_Plan_List_All" resultType="productplanning_vo" parameterType="String">
+      <![CDATA[
+         select pp_NO, PP_Sequence, PP_Schedule, PP_Quantity, EMP_Name from Production_Planning where ItemNO = #{itemno} order by PP_Sequence asc
+      ]]>    
+	</select>
+	
+	<select id="Find_ProductPlanning_Item_Search_List" resultType="productplanning_vo" parameterType="String">
+      <![CDATA[
+         select ItemNO, Item_Name, StockUnit, dayProduction from Item where upper(ItemNO) = upper(#{itemno}) 
+      ]]>    
+	</select>
+	
+	<insert id="ADD_PrdouctPlanning_Plan_List" parameterType="productplanning_dto">
+	  <![CDATA[
+		 insert into Production_Planning(pp_NO, itemNO, item_name, stockunit, dayproduction, pp_sequence, pp_schedule, pp_quantity, emp_name)
+		 values(#{pp_NO}, #{itemNO}, #{item_Name}, #{stockUnit}, #{dayProduction}, #{pp_Sequence}, #{pp_Schedule}, #{pp_Quantity}, #{emp_Name})
+		 
+	  ]]>
+	</insert>
+	
+	<update id="MOD_PrdouctPlanning_Plan_List" parameterType="productplanning_dto">
+	  <![CDATA[
+	     update Production_Planning
+	     set pp_sequence=#{pp_Sequence}, pp_schedule=#{pp_Schedule}, pp_quantity=#{pp_Quantity}, emp_name=#{emp_Name}
+	     where
+	     pp_NO=#{pp_NO}
+      ]]>
+	</update>
+     
+   <delete id="DEL_ProductPlanning_Plan_List" parameterType="String">
+	<![CDATA[
+	   delete from production_planning where pp_no = #{pp_no}
+	]]>      
+  </delete>
+ 	
+
+</mapper>
