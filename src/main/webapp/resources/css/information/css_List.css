@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.div1 {
+	padding-top : 50px;
+	padding : left;
+	font-size: 20px;
+	width : 370px;
+}
+
+.btn {
+	position: relative;
+	right: 0;
+	padding-right: 150px;
+}

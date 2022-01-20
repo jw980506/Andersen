@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="mapper.information.employee">
+	
+	<resultMap id="employee_List_Result" type="emoloyeeVO">
+		<result property="empNo" column="empNo" />				<!-- 사원코드 -->
+		<result property="emp_Name" column="emp_Name" />		<!-- 사원명 -->
+		<result property="password" column="password" />		<!-- 비밀번호 -->
+		<result property="deptNo" column="deptNo" />			<!-- 부서코드 -->
+		<result property="dept_Name" column="deptName" />		<!-- 부서명 -->
+		<result property="hireDate" column="hireDate" />		<!-- 입사일 -->
+	</resultMap>
+	
+	<select id="selectAllEmployeeList" resultMap="employee_List_Result">
+		<![CDATA[
+			select * from employee order by hireDate
+		]]>
+	</select>
+	
+</mapper>

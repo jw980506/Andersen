@@ -4,6 +4,7 @@
 
 <configuration>
 	<typeAliases>
+		<typeAlias type="com.andersen.mes.information.employee.vo.EmployeeVO" alias="emoloyeeVO" />
 		<typeAlias type="com.andersen.mes.product.ProductPlanning.vo.ProductPlanning_VO"  alias="productplanning_vo" />
 		<typeAlias type="com.andersen.mes.product.ProductPlanning.dto.ProductPlanning_DTO"  alias="productplanning_dto" />
 	</typeAliases>

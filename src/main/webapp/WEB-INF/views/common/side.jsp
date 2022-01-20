@@ -65,7 +65,7 @@
 		<li class="menu">
 			<div class="title">기초정보</div>
 			<ul class="subMenu">
-				<li><a href="#">사원</a></li>
+				<li><a href="${contextPath}/employeesList.do">사원</a></li>
 				<li><a href="#">품목</a></li>
 				<li><a href="#">BOM</a></li>
 			</ul>

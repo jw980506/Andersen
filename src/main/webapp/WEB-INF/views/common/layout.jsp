@@ -50,7 +50,7 @@
           <tiles:insertAttribute name="side"/> 
       </div>
       <div id="content">
-          <tiles:insertAttribute name="body"/>
+          <tiles:insertAttribute name="body" ignore="true"/>
       </div>
     </div>
   </body>

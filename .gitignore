@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,java,eclipse,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,java,eclipse,windows
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,maven,eclipse,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,maven,eclipse,java
 
 ### Eclipse ###
 .metadata
@@ -123,6 +123,28 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+### JDBC ###
+jdbc.properties
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -149,4 +171,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,java,eclipse,windows
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,maven,eclipse,java
