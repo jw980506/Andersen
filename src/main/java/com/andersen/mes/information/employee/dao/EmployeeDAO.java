@@ -13,4 +13,6 @@ public interface EmployeeDAO {
 	 * @throws DataAccessException
 	 */
 	public List selectAllEmployeeList() throws DataAccessException;
+	
+	public void addEmployee() throws DataAccessException;
 }
