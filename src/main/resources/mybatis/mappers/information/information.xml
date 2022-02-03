@@ -52,7 +52,7 @@
   </delete>
   
   <!-- Item 부분 -->
-  <select id="" resultType="itemVO">
+  <select id="selectAllItemList" resultType="itemVO">
   		select * from item
   </select>  
   
