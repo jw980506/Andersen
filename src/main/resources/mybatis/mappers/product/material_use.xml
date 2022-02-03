@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.material">
+	<resultMap id="material_use_Result" type="material_useVO">
+		<result property="rd_NO" column="rd_NO" />
+		<result property="pr_NO" column="pr_NO" />
+		<result property="use_Report" column="use_Report" />
+		<result property="pr_Process" column="pr_Process" />
+		<result property="pr_Workspace" column="pr_Workspace" />
+		<result property="pr_Date" column="pr_Date" />
+		<result property="itemNO" column="itemNO" />
+		<result property="item_Name" column="item_Name" />
+		<result property="stockUnit" column="stockUnit" />
+		<result property="rd_Status" column="rd_Status" />
+		<result property="pr_OrNot" column="pr_OrNot" />
+		<result property="pr_Quantity" column="pr_Quantity" />
+		
+		<result property="num" column="num" />
+		<result property="use_Date" column="use_Date" />
+		<result property="cds_needQuantity" column="cds_needQuantity" />
+
+	</resultMap>
+	
+	<select id="selectAllMaterial_UseUpList" resultMap="material_use_Result">
+      <![CDATA[
+         select * from material_use order by RD_NO desc
+      ]]>
+	</select>
+	
+  	<select id="searchPr_noDownList"  resultType="material_useVO" parameterType="String" >
+	<![CDATA[
+		select * from material_use_sub
+		where
+		pr_NO=#{pr_NO}	
+		order by num desc
+	]]>
+  	</select>
+  	
+  	<select id="searchDateUpList" resultType="material_useVO" parameterType="material_useVO" >
+	<![CDATA[
+		select * from material_use	
+		where pr_Date >= #{beginDate} and pr_Date < #{endDate}	]]>
+  	</select>
+  	
+  	<insert id="insertMaterial_Use"  parameterType="material_useVO">
+		<![CDATA[
+		 insert into material_use_sub(pr_NO, num, use_Date, pr_Process, pr_Workspace, itemNO, item_Name, stockUnit, cds_needQuantity)
+		 values(#{pr_NO}, #{num}, #{use_Date}, #{pr_Process}, #{pr_Workspace}, #{itemNO}, #{item_Name}, #{stockUnit}, #{cds_needQuantity})
+		]]>      
+	</insert>
+	
+	<update id="updateMaterial_Use"  parameterType="material_useVO">
+     <![CDATA[
+	     update material_use_sub
+	     set use_Date=#{use_Date}, pr_Process=#{pr_Process}, pr_Workspace=#{pr_Workspace}, itemNO=#{itemNO}, stockUnit=#{stockUnit}, cds_needQuantity=#{cds_needQuantity}
+	     where
+	     pr_NO=#{pr_NO} and num=#{num}
+      ]]>      
+   	</update>
+   	
+   	<delete id="deleteMaterial_Use"  parameterType="material_useVO">
+	<![CDATA[
+	   delete from material_use_sub
+	   where
+	   pr_NO=#{pr_NO} and num=#{num}
+	]]>      
+  	</delete>
+	
+</mapper>

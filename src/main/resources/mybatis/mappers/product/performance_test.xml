@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.performance">
+	<resultMap id="performance_test_Result" type="Performance_TestVO">
+		<result property="rd_NO" column="rd_NO" />
+		<result property="pr_NO" column="pr_NO" />
+		<result property="pr_Date" column="pr_Date" />
+		<result property="itemNO" column="itemNO" />
+		<result property="item_Name" column="item_Name" />
+		<result property="stockUnit" column="stockUnit" />
+		<result property="pr_Quantity" column="pr_Quantity" />
+		<result property="rd_Status" column="rd_Status" />
+		<result property="work_Scope" column="work_Scope" />
+		
+		<result property="num" column="num" />
+		<result property="test_Date" column="test_Date" />
+		<result property="test_Class" column="test_Class" />
+		<result property="sample_Quantity" column="sample_Quantity" />
+		<result property="test_Type" column="test_Type" />
+		<result property="pass" column="pass" />
+		<result property="passed_Quantity" column="passed_Quantity" />
+		<result property="fail_Quantity" column="fail_Quantity" />
+	</resultMap>
+	
+	<select id="selectAllPerformance_TestUpList" resultMap="performance_test_Result">
+      <![CDATA[
+         select * from performance_test order by RD_NO desc
+      ]]>
+	</select>
+	
+	<select id="selectAllPerformance_TestList" resultMap="performance_test_Result">
+      <![CDATA[
+         select * from performance_test_sub order by RD_NO desc
+      ]]>
+	</select>
+  	
+  	<select id="searchPr_noDownList"  resultType="Performance_TestVO" parameterType="String" >
+	<![CDATA[
+		select * from performance_test_sub	
+		where
+		pr_NO=#{pr_NO}	
+		order by num desc
+	]]>
+  	</select>
+  	
+  	<select id="searchDateUpList" resultType="Performance_TestVO" parameterType="Performance_TestVO" >
+	<![CDATA[
+		select * from performance_test	
+		where pr_Date >= #{beginDate} and pr_Date < #{endDate}	]]>
+  	</select>
+  	
+  	<insert id="insertPerformance_Test"  parameterType="Performance_TestVO">
+		<![CDATA[
+		 insert into performance_test_sub(pr_NO, num, test_Date, test_Class, sample_Quantity, test_Type, pass, passed_Quantity, fail_Quantity)
+		 values(#{pr_NO},#{num}, #{test_Date}, #{test_Class}, #{sample_Quantity}, #{test_Type}, #{pass}, #{passed_Quantity}, #{fail_Quantity})
+		]]>      
+	</insert>
+	
+	<update id="updatePerformance_Test"  parameterType="Performance_TestVO">
+     <![CDATA[
+	     update performance_test_sub
+	     set test_Date=#{test_Date}, test_Class=#{test_Class}, sample_Quantity=#{sample_Quantity}, test_Type=#{test_Type}, pass=#{pass}, passed_Quantity=#{passed_Quantity},
+	     fail_Quantity=#{fail_Quantity}
+	     where
+	     pr_NO=#{pr_NO} and num=#{num}
+      ]]>      
+   	</update>
+   	
+   	<delete id="deletePerformance_Test"  parameterType="Performance_TestVO">
+	<![CDATA[
+	   delete from performance_test_sub
+	   where
+	   pr_NO=#{pr_NO} and num=#{num}
+	]]>      
+  	</delete>
+	
+</mapper>

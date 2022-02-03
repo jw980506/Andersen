@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.goods">
+	<resultMap id="goods_warehouse_Result" type="goods_warehouseVO">
+		<result property="rd_NO" column="rd_NO" />
+		<result property="pr_NO" column="pr_NO" />
+		<result property="pr_Date" column="pr_Date" />
+		<result property="itemNO" column="itemNO" />
+		<result property="item_Name" column="item_Name" />
+		<result property="stockUnit" column="stockUnit" />
+		<result property="rd_Status" column="rd_Status" />
+		<result property="pr_Quantity" column="pr_Quantity" />
+		<result property="warehouse_Quantity" column="warehouse_Quantity" />
+		<result property="warehousing_Quantity" column="warehousing_Quantity" />
+		
+		<result property="gw_NO" column="gw_NO" />
+		<result property="gw_DATE" column="gw_DATE" />
+		<result property="gw_Warehouse" column="gw_Warehouse" />
+		<result property="gw_Place" column="gw_Place" />
+		<result property="gw_Quantity" column="gw_Quantity" />
+	</resultMap>
+	
+	<select id="selectAllGoods_WarehouseUpList" resultMap="goods_warehouse_Result">
+      <![CDATA[
+         select * from goods_warehouse order by RD_NO desc
+      ]]>
+	</select>
+  
+  	<select id="selectAllGoods_WarehouseDownList" resultMap="goods_warehouse_Result">
+      <![CDATA[
+         select * from goods_warehouse_sub order by PR_NO desc
+      ]]>
+	</select>
+	
+	<select id="searchPr_noDownList"  resultType="goods_warehouseVO"   parameterType="String" >
+	<![CDATA[
+		select * from goods_warehouse_sub	
+		where
+		pr_NO=#{pr_NO}	
+	]]>
+  	</select>
+  	
+  	<select id="searchDateUpList" resultType="goods_warehouseVO" parameterType="goods_warehouseVO" >
+	<![CDATA[
+		select * from goods_warehouse	
+		where pr_Date >= #{beginDate} and pr_Date < #{endDate}	]]>
+  	</select>
+  	
+  	<insert id="insertGoods_Warehouse"  parameterType="goods_warehouseVO">
+		<![CDATA[
+		 insert into goods_warehouse_sub(pr_NO, gw_NO, gw_DATE, gw_Warehouse, gw_Place, gw_Quantity)
+		 values(#{pr_NO}, #{gw_NO}, #{gw_DATE}, #{gw_Warehouse}, #{gw_Place}, #{gw_Quantity})
+		]]>      
+	</insert>
+  	
+  	<update id="updateGoods_Warehouse"  parameterType="goods_warehouseVO">
+     <![CDATA[
+	     update goods_warehouse_sub
+	     set gw_DATE=#{gw_DATE}, gw_Warehouse=#{gw_Warehouse}, gw_Place=#{gw_Place}, gw_Quantity=#{gw_Quantity}
+	     where
+	     gw_NO=#{gw_NO}
+      ]]>      
+   	</update>
+   	
+   	<delete id="deleteGoods_Warehouse"  parameterType="String">
+	<![CDATA[
+	   delete from  goods_warehouse_sub
+	   where
+	   gw_NO=#{gw_NO}
+	]]>      
+  	</delete>
+</mapper>

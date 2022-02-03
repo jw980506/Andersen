@@ -8,5 +8,12 @@
 		<typeAlias type="com.andersen.mes.information.item.vo.ItemVO" alias="itemVO"/>
 		<typeAlias type="com.andersen.mes.product.ProductPlanning.vo.ProductPlanning_VO"  alias="productplanning_vo" />
 		<typeAlias type="com.andersen.mes.product.ProductPlanning.dto.ProductPlanning_DTO"  alias="productplanning_dto" />
+				
+		<typeAlias type="com.andersen.mes.product.performance_registration.vo.Performance_RegistrationVO"  alias="performance_registrationVO" />
+		<typeAlias type="com.andersen.mes.product.material_use.vo.Material_UseVO"  alias="material_useVO" />
+		<typeAlias type="com.andersen.mes.product.performance_test.vo.Performance_TestVO"  alias="performance_testVO" />
+		<typeAlias type="com.andersen.mes.product.direction_deadline.vo.Direction_DeadlineVO"  alias="direction_deadlineVO" />
+		<typeAlias type="com.andersen.mes.product.goods_warehouse.vo.Goods_WarehouseVO"  alias="goods_warehouseVO" />
+		<typeAlias type="com.andersen.mes.product.material_release.vo.Material_ReleaseVO"  alias="material_releaseVO" />
 	</typeAliases>
 </configuration>

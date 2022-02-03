@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.direction">
+	<resultMap id="direction_deadline_Result" type="direction_deadlineVO">
+		<result property="rd_NO" column="rd_NO" />
+		<result property="rd_Date" column="rd_Date" />
+		<result property="mr_Date" column="mr_Date" />
+		<result property="itemNO" column="itemNO" />
+		<result property="item_Name" column="item_Name" />
+		<result property="stockUnit" column="stockUnit" />
+		<result property="rd_Quantity" column="rd_Quantity" />
+		<result property="rd_Status" column="rd_Status" />
+	</resultMap>
+	
+	<select id="selectAllDirection_DeadlineUpList" resultMap="direction_deadline_Result">
+      <![CDATA[
+         select * from direction_deadline order by RD_NO desc
+      ]]>
+	</select>
+	
+	<select id="searchDateUpList" resultType="direction_deadlineVO" parameterType="direction_deadlineVO" >
+	<![CDATA[
+		select * from direction_deadline	
+		where rd_Date >= #{beginDate} and rd_Date < #{endDate}	]]>
+  	</select>
+  	
+  	<update id="updateDirection_Deadline"  parameterType="String">
+     <![CDATA[
+	     update direction_deadline
+	     set rd_Status='마감'
+	     where
+	     rd_NO=#{rd_NO}
+      ]]>      
+   	</update>
+   	
+   	<update id="updateBackDirection_Deadline"  parameterType="String">
+     <![CDATA[
+	     update direction_deadline
+	     set rd_Status='확정'
+	     where
+	     rd_NO=#{rd_NO}
+      ]]>      
+   	</update>
+</mapper>

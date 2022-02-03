@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product">
+	<resultMap id="performance_registration_Result" type="performance_registrationVO">
+		<result property="rd_no" column="rd_no" />
+		<result property="release_Status" column="release_Status" />
+		<result property="rd_Workspace" column="rd_Workspace" />
+		<result property="rd_Date" column="rd_Date" />
+		<result property="mr_Date" column="mr_Date" />
+		<result property="itemNO" column="itemNO" />
+		<result property="item_Name" column="item_Name" />
+		<result property="stockUnit" column="stockUnit" />
+		<result property="rd_Quantity" column="rd_Quantity" />
+		<result property="pr_Quantity" column="pr_Quantity" />
+		<result property="pr_Residual_Quantity" column="pr_Residual_Quantity" />
+		<result property="rd_Status" column="rd_Status" />
+		<result property="work_Scope" column="work_Scope" />
+		<result property="rd_Test" column="rd_Test" />
+		
+		<result property="pr_NO" column="pr_NO" />
+		<result property="materials_Availability" column="materials_Availability" />
+		<result property="pr_Date" column="pr_Date" />
+		<result property="pr_Process" column="pr_Process" />
+		<result property="pr_Workspace" column="pr_Workspace" />
+		<result property="transfer_Separation" column="transfer_Separation" />
+		<result property="pr_OrNot" column="pr_OrNot" />
+		<result property="pr_Name" column="pr_Name" />
+		<result property="warehouse_Process" column="warehouse_Process" />
+		<result property="place_Workspace" column="place_Workspace" />
+
+	</resultMap> 
+
+	<select id="selectAllPerformance_RegistrationUpList" resultMap="performance_registration_Result">
+      <![CDATA[
+         select * from performance_registration order by RD_NO desc
+      ]]>
+	</select>
+  
+  	<select id="selectAllPerformance_RegistrationDownList" resultMap="performance_registration_Result">
+      <![CDATA[
+         select * from performance_registration_sub order by RD_NO desc
+      ]]>
+	</select>
+	
+	<insert id="insertPerformance_Registration"  parameterType="performance_registrationVO">
+		<![CDATA[
+		 insert into performance_registration_sub(rd_no, pr_NO, materials_Availability, pr_Date, pr_Process, pr_Workspace, transfer_Separation, pr_OrNot, pr_Quantity, rd_Test, pr_Name, warehouse_Process, place_Workspace)
+		 values(#{rd_no}, #{pr_NO}, #{materials_Availability}, #{pr_Date}, #{pr_Process}, #{pr_Workspace}, #{transfer_Separation}, #{pr_OrNot}, #{pr_Quantity}, #{rd_Test}, #{pr_Name}, #{warehouse_Process}, #{place_Workspace})
+		]]>      
+	</insert>
+	
+	<insert id="insertMaterial_Use"  parameterType="performance_registrationVO">
+		<![CDATA[
+		 insert into material_use(rd_no, pr_NO, pr_Process, pr_Workspace, pr_Date, itemNO, item_Name, pr_OrNot , pr_Quantity)
+		 values(#{rd_no}, #{pr_NO}, #{pr_Process}, #{pr_Workspace}, #{pr_Date}, #{itemNO}, #{item_Name}, #{pr_OrNot}, #{pr_Quantity})
+		]]>      
+	</insert>
+	
+	<update id="updatePerformance_Registration"  parameterType="performance_registrationVO">
+     <![CDATA[
+	     update performance_registration_sub
+	     set rd_no=#{rd_no}, materials_Availability=#{materials_Availability}, pr_Process=#{pr_Process}, pr_Workspace=#{pr_Workspace}, transfer_Separation=#{transfer_Separation}, pr_OrNot=#{pr_OrNot},
+	     pr_Quantity=#{pr_Quantity}, rd_Test=#{rd_Test}, pr_Name=#{pr_Name}, warehouse_Process=#{warehouse_Process}, place_Workspace=#{place_Workspace}
+	     where
+	     pr_NO=#{pr_NO}
+      ]]>      
+   	</update>
+   	
+   	<delete id="deletePerformance_Registration"  parameterType="String">
+	<![CDATA[
+	   delete from  performance_registration_sub
+	   where
+	   pr_NO=#{pr_NO}
+	]]>      
+  	</delete>
+  	
+  	<select id="searchRd_noDownList"  resultType="performance_registrationVO"   parameterType="String" >
+	<![CDATA[
+		select * from performance_registration_sub	
+		where
+		rd_no=#{rd_no}	
+	]]>
+  	</select>
+	
+	<select id="searchRd_noUpList"  resultType="performance_registrationVO"   parameterType="String" >
+	<![CDATA[
+		select * from performance_registration	
+		where
+		rd_no=#{rd_no}	
+	]]>
+  	</select>
+  	
+  	<select id="searchDateUpList" resultType="performance_registrationVO" parameterType="performance_registrationVO" >
+	<![CDATA[
+		select * from performance_registration	
+		where rd_date >= #{beginDate} and rd_date < #{endDate}	]]>
+  	</select>
+  	
+</mapper>

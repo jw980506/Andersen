@@ -76,12 +76,12 @@
                 <li><a href="${contextPath}/ProductPlanning.do">생산계획등록</a></li>
                 <li><a href="${contextPath}/RegistDirection.do">작업지시등록</a></li>
                 <li><a href="#">작업지시확정</a></li>
-                <li><a href="#">생산자재출고</a></li>
-                <li><a href="#">작업실적등록</a></li>
-                <li><a href="#">생산자재사용등록</a></li>
-                <li><a href="#">생산실적검사</a></li>
-                <li><a href="#">생산품창고 입고처리</a></li>
-                <li><a href="#">작업지시마감처리</a></li>			
+                <li><a href="${contextPath}/product/main_material_release.do">생산자재출고</a></li>
+                <li><a href="${contextPath}/product/main_performance_registration.do">작업실적등록</a></li>
+                <li><a href="${contextPath}/product/main_material_use.do">생산자재사용등록</a></li>
+                <li><a href="${contextPath}/product/main_performance_test.do">생산실적검사</a></li>
+                <li><a href="${contextPath}/product/main_goods_warehouse.do">생산품창고입고처리</a></li>
+                <li><a href="${contextPath}/product/main_direction_deadline.do">작업지시마감처리</a></li>			
 			</ul>
 		</li>
 	</ul>

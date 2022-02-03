@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.material_r">
+	<resultMap id="material_release_Result" type="material_releaseVO">
+		<result property="mr_NO" column="mr_NO" />
+		<result property="mr_Date" column="mr_Date" />
+		<result property="mr_Warehouse" column="mr_Warehouse" />
+		<result property="mr_Place" column="mr_Place" />
+		<result property="rd_Process" column="rd_Process" />
+		<result property="rd_Workspace" column="rd_Workspace" />
+		<result property="emp_Name" column="emp_Name" />
+		
+		<result property="mrs_Sequence" column="mrs_Sequence" />
+		<result property="itemNO" column="itemNO" />
+		<result property="item_Name" column="item_Name" />
+		<result property="stockUnit" column="stockUnit" />
+		<result property="rr_Quantity" column="rr_Quantity" />	
+		<result property="mrs_Quantity" column="mrs_Quantity" />
+		
+		<result property="rd_NO" column="rd_NO" />
+		<result property="cds_Request_Date" column="cds_Request_Date" />	
+		<result property="cds_needQuantity" column="cds_needQuantity" />
+
+	</resultMap>
+	
+	<select id="selectAllMaterial_ReleaseUpList" resultMap="material_release_Result">
+      <![CDATA[
+         select * from material_release order by mr_NO desc
+      ]]>
+	</select>
+	
+	<select id="searchMr_noDownList"  resultType="material_releaseVO" parameterType="String" >
+	<![CDATA[
+		select * from material_release_sub
+		where
+		mr_NO=#{mr_NO}	
+		order by mrs_Sequence desc
+	]]>
+  	</select>
+  	
+  	<select id="searchDateUpList" resultType="material_releaseVO" parameterType="material_releaseVO" >
+	<![CDATA[
+		select * from material_release	
+		where mr_Date >= #{beginDate} and mr_Date < #{endDate}	]]>
+  	</select>
+  	
+  	<select id="searchDatePopList" resultType="material_releaseVO" parameterType="material_releaseVO" >
+	<![CDATA[
+		select * from Confirm_Direction_Sub	
+		where CDS_Request_Date  >= #{beginDate} and CDS_Request_Date < #{endDate}	]]>
+  	</select>
+  	
+  	<insert id="insertUpPop_Material_Release" parameterType="String">
+	<![CDATA[
+		insert into material_release(mr_NO)
+		values(#{mr_NO})
+		]]>      
+	</insert>
+  	
+  	<insert id="insertDownPop_Material_Release"  parameterType="material_releaseVO">
+		<![CDATA[
+		 insert into material_release_sub(mr_NO, rd_NO, itemNO, item_Name, rr_Quantity, mrs_Quantity)
+		 values(#{mr_NO}, #{rd_NO}, #{itemNO}, #{item_Name}, #{rr_Quantity}, #{mrs_Quantity})
+		]]>      
+	</insert>
+	
+	<insert id="insertMaterial_Release"  parameterType="material_releaseVO">
+		<![CDATA[
+		 insert into material_release(mr_NO, mr_Date, mr_Warehouse, mr_Place, rd_Process, rd_Workspace, emp_Name)
+		 values(#{mr_NO}, #{mr_Date}, #{mr_Warehouse}, #{mr_Place}, #{rd_Process}, #{rd_Workspace}, #{emp_Name})
+		]]>      
+	</insert>
+	
+	<update id="updateMaterial_Release"  parameterType="material_releaseVO">
+     <![CDATA[
+	     update material_release
+	     set mr_Date=#{mr_Date}, mr_Warehouse=#{mr_Warehouse}, mr_Place=#{mr_Place}, rd_Process=#{rd_Process}, rd_Workspace=#{rd_Workspace}, emp_Name=#{emp_Name}
+	     where
+	     mr_NO=#{mr_NO}
+      ]]>      
+   	</update>
+   	
+   	<delete id="deleteMaterial_Release"  parameterType="String">
+	<![CDATA[
+	   delete from material_release
+	   where
+	   mr_NO=#{mr_NO}
+	]]>      
+  	</delete>
+  	
+</mapper>
