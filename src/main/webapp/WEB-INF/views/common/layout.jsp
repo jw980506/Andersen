@@ -27,11 +27,11 @@
         margin-right: 5px;
         margin-bottom: 5px;
         float: left;
-        border: 0px solid #bcbcbc;
+        border: px solid #bcbcbc;
       }
      
       #content {
-        width: 75%;
+        width: 80%;
         padding: 5px;
         margin-right: 5px;
         float: left;

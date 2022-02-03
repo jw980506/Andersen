@@ -20,7 +20,7 @@
 	}
 
 	ul#navi {
-		width: 250px;
+		width: 15%;
 		text-indent: 15px;
         position: absolute;
         top: 150px;

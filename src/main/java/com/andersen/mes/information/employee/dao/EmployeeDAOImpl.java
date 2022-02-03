@@ -23,4 +23,19 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return listAllEmployee;
 	}
 
+	@Override
+	public void addOneEmployee(EmployeeVO employeeVO) throws DataAccessException {
+		sqlSession.insert("mapper.information.employee.addOneEmployee", employeeVO);
+	}
+
+	@Override
+	public void modOneEmployee(EmployeeVO employeeVO) throws DataAccessException {
+		sqlSession.update("mapper.information.employee.modOneEmployee", employeeVO);
+	}
+
+	@Override
+	public void delOneEmployee(int empNo) throws DataAccessException {
+		sqlSession.delete("mapper.information.employee.delOneEmployee",empNo);
+	}
+
 }

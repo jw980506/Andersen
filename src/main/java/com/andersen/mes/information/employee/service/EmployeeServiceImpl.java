@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.andersen.mes.information.employee.dao.EmployeeDAO;
+import com.andersen.mes.information.employee.vo.EmployeeVO;
 
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
@@ -22,5 +23,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return listAllEmployee;
 	}
 
+	@Override
+	public void addEmployee(EmployeeVO employeeVO) throws DataAccessException {
+		employeeDAO.addOneEmployee(employeeVO);
+	}
+
+	@Override
+	public void modEmployee(EmployeeVO employeeVO) throws DataAccessException {
+		employeeDAO.modOneEmployee(employeeVO);
+	}
+
+	@Override
+	public void delEmployee(int empNo) throws DataAccessException {
+		employeeDAO.delOneEmployee(empNo);
+	}
+	
 	
 }

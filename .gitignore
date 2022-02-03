@@ -138,6 +138,7 @@ buildNumber.properties
 
 ### JDBC ###
 jdbc.properties
+jdbc.properties
 
 # Eclipse m2e generated files
 # Eclipse Core

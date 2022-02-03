@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import com.andersen.mes.information.employee.vo.EmployeeVO;
+
 public interface EmployeeDAO {
 	
 	/**
@@ -14,5 +16,9 @@ public interface EmployeeDAO {
 	 */
 	public List selectAllEmployeeList() throws DataAccessException;
 	
-	public void addEmployee() throws DataAccessException;
+	public void addOneEmployee(EmployeeVO employeeVO) throws DataAccessException;
+	
+	public void modOneEmployee(EmployeeVO employeeVO) throws DataAccessException;
+	
+	public void delOneEmployee(int empNo) throws DataAccessException;
 }

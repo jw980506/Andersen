@@ -5,13 +5,13 @@
    
 <mapper namespace="mapper.information.employee">
 	
-	<resultMap id="employee_List_Result" type="emoloyeeVO">
-		<result property="empNo" column="empNo" />				<!-- 사원코드 -->
+	<resultMap id="employee_List_Result" type="employeeVO">
+		<id property="empNo" column="empNo" />				<!-- 사원코드 -->
 		<result property="emp_Name" column="emp_Name" />		<!-- 사원명 -->
 		<result property="password" column="password" />		<!-- 비밀번호 -->
 		<result property="deptNo" column="deptNo" />			<!-- 부서코드 -->
 		<result property="dept_Name" column="deptName" />		<!-- 부서명 -->
-		<result property="hireDate" column="hireDate" />		<!-- 입사일 -->
+		<result property="hireDate" column="hireDate" javaType="java.sql.Date"/>		<!-- 입사일 -->
 	</resultMap>
 	
 	<select id="selectAllEmployeeList" resultMap="employee_List_Result">
@@ -20,4 +20,51 @@
 		]]>
 	</select>
 	
+	<insert id="addOneEmployee" parameterType="com.andersen.mes.information.employee.vo.EmployeeVO">
+		<![CDATA[
+			insert into employee(empNo, emp_Name, password, deptNo, dept_Name)
+			values(
+				#{empNo}
+			, 	#{emp_Name}
+			,	#{password}
+			, 	#{deptNo}
+			, 	#{dept_Name}
+		)
+		]]>
+	</insert>
+	
+	<update id="modOneEmployee" parameterType="com.andersen.mes.information.employee.vo.EmployeeVO">
+		<![CDATA[
+			update employee
+	     	set emp_Name=#{emp_Name}, 
+	     		password=#{password}, 
+	     		deptNo=#{deptNo}, 
+	     		dept_Name=#{dept_Name}
+	     	where
+	     		empNo=#{empNo}
+		]]>
+	</update>
+	
+	<delete id="delOneEmployee" parameterType="int">
+	<![CDATA[
+	   delete from employee where empNo = #{empNo}
+	]]>      
+  </delete>
+  
+  <!-- Item 부분 -->
+  <select id="" resultType="itemVO">
+  		select * from item
+  </select>  
+  
+  <insert id="">
+  
+  </insert>
+  
+  <update id="">
+  
+  </update>
+  
+  <delete id="">
+  
+  </delete>
 </mapper>
