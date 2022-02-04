@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"   isELIgnored="false"  %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
  
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
@@ -80,23 +81,23 @@
         
  </style>
 <body>
-1페이지
+2페이지
     <div class = "div_all">
 		<div class="div1">
-		<table cellspacing="15" width="500">
+		<table cellspacing="15">
 				<form method = "post" name="form" id="form">
 				<tr>
         			<td style="text-align: right;">공정</td>
         			<td><select name="asd2" id="asd2">
-               			<option value="">선택</option>
-                		<option value="작업공정">작업공정</option>
-						<option value="작업공정(도색)">작업공정(도색)</option>
+                <option value="">선택</option>
+                <option value="공정1">공정1</option>
+                <option value="공정2">공정2</option>
             </select></td>
             <td style="text-align: right;">작업장</td>  
         			<td><select name="asd" id="asd">
                         <option value="">선택</option>
-                        <option value="제품 작업장">제품 작업장</option>
-                        <option value="반제품 작업장">반제품 작업장</option>
+                        <option value="작업장1">작업장1</option>
+                        <option value="작업장2">작업장2</option>
                     </select></td>
         			<td><input type="button" id="search_by_itemNO" value="검색"></td> <!-- 품번 또는 작업예정일로 조회하는 버튼 "search" -->
         		</tr>
@@ -108,9 +109,9 @@
     		<div class="bt_1">
     		<form method="post" name="form">
                 <input type="button"value="생산계획조회" style="width: 100px;" class="bt_02" onclick="showPOP();"/>
-        		<input type="button" id="" value="등록" style="width: 50px;" class="bt_03" disabled/>
-        		<input type="button" id="" value="수정" style="width: 50px;" class="bt_04" disabled/>
-        		<input type="button" id="" value="삭제" style="width: 50px;" class="bt_05" disabled/>
+        		<input type="button" id="add" value="등록" style="width: 50px;" class="bt_03" />
+        		<input type="button" id="mod" value="수정" style="width: 50px;" class="bt_04" />
+        		<input type="button" id="del" value="삭제" style="width: 50px;" class="bt_05" />
         		</form>
 
                 <!-- 1234~ OR 2345~ -->
@@ -134,7 +135,7 @@
                             <th class="th_11">상태</th>
                             <th class="th_12">검사</th>
             			</tr>
-        				
+        				<c:forEach var="After_POPUP_List" items="${After_POPUP_List}">
         				<tr align = "center">
     	            		<td class="td_1" style="text-align: center;">
     	            		<input type="checkbox" id="ItemList_Checkbox" ></td> <!-- 항목 -->
@@ -143,27 +144,26 @@
                 			
                             <td class="td_3"><select name="asd2" id="asd2">
                                 <option value="">선택</option>
-                                <option value="작업공정">작업공정</option>
-                                <option value="작업공정(도색)">작업공정(도색)</option>
+                                <option value="공정1">공정1</option>
+                                <option value="공정2">공정2</option>
                             </select></td>
                             
                 			<td class="td_4"><select name="asd" id="asd">
                                 <option value="">선택</option>
-                                <option value="제품 작업장">제품 작업장</option>
-                                <option value="반제품 작업장">반제품 작업장</option>
+                                <option value="작업장1">작업장1</option>
+                                <option value="작업장2">작업장2</option>
                             </select></td>
-                			
-                            <td class="td_5"><input type="text" size=6 value=""></td>
+                			<td class="td_3"><input type="text" size=6 value="<fmt:formatDate value="${After_POPUP_List.pp_Schedule}" pattern="yyyy-MM-dd"/>" /></td>
 
                             <td class="td_5"><input type="text" size=6 value=""></td>
 
-                            <td class="td_2"><input type="text" size=10></td>
+                            <td class="td_2"><input type="text" size=10 value="${After_POPUP_List.itemNO}"></td>
                             
-                            <td class="td_3"><input type="text" size=10></td>
+                            <td class="td_3"><input type="text" size=10 value="${After_POPUP_List.item_Name}"></td>
                             
-                            <td class="td_4"><input type="text" size=4></td>
+                            <td class="td_4"><input type="text" size=4 value="${After_POPUP_List.stockUnit}"></td>
 
-                            <td class="td_4"><input type="text" size=4></td>
+                            <td class="td_4"><input type="text" size=4 value="${After_POPUP_List.pp_Quantity}"></td>
 
                             <td class="td_4"><input type="text" size=4></td>
                         
@@ -174,6 +174,7 @@
                             </select></td>
                         
                         </tr>
+                        </c:forEach>
         			</table>
 	    		</div>
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product.registdirection">
+	
+	<resultMap id="RegistDirection_Plan_List_Result" type="registdirection_vo" >
+      <result property="rd_NO" column="rd_NO" /> 
+      <result property="re_Date" column="re_Date" /> 
+      <result property="rd_Period" column="rd_Period" />
+      <result property="itemNO" column="itemNO" /> 
+      <result property="item_Name" column="item_Name" /> 
+      <result property="stockUnit" column="stockUnit" /> 
+      <result property="rd_Process" column="rd_Process" /> 
+      <result property="rd_WorkSpace" column="rd_WorkSpace" />
+      <result property="rd_Quantity" column="rd_Quantity" /> 
+      <result property="rd_Status" column="rd_Status" /> 
+      <result property="rd_Test" column="rd_Test" /> 
+      <result property="emp_Name" column="emp_Name" />
+    </resultMap> 
+    
+    <resultMap id="RegistDirection_Plan_List_DTO" type="registdirection_dto" >
+     <result property="rd_NO" column="rd_NO" /> 
+      <result property="re_Date" column="re_Date" /> 
+      <result property="rd_Period" column="rd_Period" /> 
+      <result property="itemNO" column="itemNO" /> 
+      <result property="item_Name" column="item_Name" /> 
+      <result property="stockUnit" column="stockUnit" /> 
+      <result property="rd_Process" column="rd_Process" /> 
+      <result property="rd_WorkSpace" column="rd_WorkSpace" /> 
+      <result property="rd_Quantity" column="rd_Quantity" /> 
+      <result property="rd_Status" column="rd_Status" /> 
+      <result property="rd_Test" column="rd_Test" /> 
+      <result property="emp_Name" column="emp_Name" />
+      <result property="pp_NO" column="pp_NO" />
+      <result property="residual_Quantity" column="residual_Quantity" />
+      <result property="pp_Quantity" column="pp_Quantity" /> 
+    </resultMap>
+	
+	<select id="Find_POPUP_List" resultMap="RegistDirection_Plan_List_DTO">
+      <![CDATA[
+         select pp_no, itemno, item_name, stockunit, pp_quantity, pp_schedule from production_Planning  
+      ]]>
+	</select>
+	
+	<select id="After_POPUP_List" resultMap="RegistDirection_Plan_List_DTO">
+      <![CDATA[
+         select pp_no, itemno, item_name, stockunit, pp_quantity, pp_schedule from production_Planning
+         where pp_NO = #{pp_NO}  
+      ]]>
+	</select>
+ 	
+
+</mapper>
