@@ -17,7 +17,7 @@ public class ItemDAOImpl implements ItemDAO {
 	public List selectAllItemList() throws DataAccessException {
 		
 		List<ItemVO> listAllItem = null;
-		listAllItem = sqlSession.selectList("mapper.information.employee.selectAllItemList");
+		listAllItem = sqlSession.selectList("mapper.information.selectAllItemList");
 		return listAllItem;
 	}
 

@@ -19,23 +19,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public List selectAllEmployeeList() throws DataAccessException {
 			
 		List<EmployeeVO> listAllEmployee = null;			// VO타입의 리스트 선언
-		listAllEmployee = sqlSession.selectList("mapper.information.employee.selectAllEmployeeList");		// 여러 행이라 selectList 사용
+		listAllEmployee = sqlSession.selectList("mapper.information.selectAllEmployeeList");		// 여러 행이라 selectList 사용
 		return listAllEmployee;
 	}
 
 	@Override
 	public void addOneEmployee(EmployeeVO employeeVO) throws DataAccessException {
-		sqlSession.insert("mapper.information.employee.addOneEmployee", employeeVO);
+		sqlSession.insert("mapper.information.addOneEmployee", employeeVO);
 	}
 
 	@Override
 	public void modOneEmployee(EmployeeVO employeeVO) throws DataAccessException {
-		sqlSession.update("mapper.information.employee.modOneEmployee", employeeVO);
+		sqlSession.update("mapper.information.modOneEmployee", employeeVO);
 	}
 
 	@Override
 	public void delOneEmployee(int empNo) throws DataAccessException {
-		sqlSession.delete("mapper.information.employee.delOneEmployee",empNo);
+		sqlSession.delete("mapper.information.delOneEmployee",empNo);
 	}
 
 }

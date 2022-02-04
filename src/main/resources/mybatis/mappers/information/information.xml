@@ -3,7 +3,7 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
-<mapper namespace="mapper.information.employee">
+<mapper namespace="mapper.information">
 	
 	<resultMap id="employee_List_Result" type="employeeVO">
 		<id property="empNo" column="empNo" />				<!-- 사원코드 -->
@@ -20,7 +20,7 @@
 		]]>
 	</select>
 	
-	<insert id="addOneEmployee" parameterType="com.andersen.mes.information.employee.vo.EmployeeVO">
+	<insert id="addOneEmployee" parameterType="employeeVO">
 		<![CDATA[
 			insert into employee(empNo, emp_Name, password, deptNo, dept_Name)
 			values(
@@ -33,7 +33,7 @@
 		]]>
 	</insert>
 	
-	<update id="modOneEmployee" parameterType="com.andersen.mes.information.employee.vo.EmployeeVO">
+	<update id="modOneEmployee" parameterType="employeeVO">
 		<![CDATA[
 			update employee
 	     	set emp_Name=#{emp_Name}, 
@@ -52,19 +52,19 @@
   </delete>
   
   <!-- Item 부분 -->
-  <select id="selectAllItemList" resultType="itemVO">
+  <select id="selectAllItemList" resultType="com.andersen.mes.information.item.vo.ItemVO">
   		select * from item
   </select>  
   
-  <insert id="">
+  <insert id="1">
   
   </insert>
   
-  <update id="">
+  <update id="2">
   
   </update>
   
-  <delete id="">
+  <delete id="3">
   
   </delete>
 </mapper>
