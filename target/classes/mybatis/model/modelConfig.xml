@@ -6,8 +6,12 @@
 	<typeAliases>
 		<typeAlias type="com.andersen.mes.information.employee.vo.EmployeeVO" alias="employeeVO" />
 		<typeAlias type="com.andersen.mes.information.item.vo.ItemVO" alias="itemVO"/>
+		
 		<typeAlias type="com.andersen.mes.product.ProductPlanning.vo.ProductPlanning_VO"  alias="productplanning_vo" />
 		<typeAlias type="com.andersen.mes.product.ProductPlanning.dto.ProductPlanning_DTO"  alias="productplanning_dto" />
+		<typeAlias alias="registdirection_vo" type="com.andersen.mes.product.RegistDirection.vo.RegistDirection_VO"/>
+		<typeAlias alias="registdirection_dto" type="com.andersen.mes.product.RegistDirection.dto.RegistDirection_DTO"/>
+		
 				
 		<typeAlias type="com.andersen.mes.product.performance_registration.vo.Performance_RegistrationVO"  alias="performance_registrationVO" />
 		<typeAlias type="com.andersen.mes.product.material_use.vo.Material_UseVO"  alias="material_useVO" />
