@@ -178,8 +178,8 @@ $(function () {
    			<br>
             <form method="post" action="${contextPath}/product/find_direction_deadline.do">
             <tr>
-        		<td style="text-align: right;">지시기간 : <input type="text" id="datepicker1" name="beginDate" style="background-color:#a9e2f8;">
-        		 ~ <input type="text" id="datepicker2" name="endDate" style="background-color:#a9e2f8;"></td>
+        		<td style="text-align: right;">지시기간 : <input type="date" id="datepicker1" name="beginDate" style="background-color:#a9e2f8;">
+        		 ~ <input type="date" id="datepicker2" name="endDate" style="background-color:#a9e2f8;"></td>
             	<td><input type="submit" value="검색" style="width: 50px;"></td>
             </tr>
            	</form>
@@ -213,27 +213,27 @@ $(function () {
  <c:forEach var="main" items="${mainList}" >     
    <tr align="center">
    	<td class="td_1" style="text-align: center;"><input type="checkbox" id="up_CheckBox" name="checked_pr_no" class="checked_rd_no" style="width: 40px;"></td>
-      <td class="th_2"><input type="text" size=20 value="${main.rd_NO}" disabled></td>
-      <td class="th_3"><input type="text" size=15 value="${main.rd_Date}" disabled></td>
-      <td class="th_4"><input type="text" size=10 value="${main.mr_Date}" disabled></td>
+      <td class="th_2"><input type="text" size=10 value="${main.rd_NO}" disabled></td>
+      <td class="th_3"><input type="date" size=6 value="${main.rd_Date}" disabled></td>
+      <td class="th_4"><input type="date" size=6 value="${main.mr_Date}" disabled></td>
       <td class="th_4"><input type="text" size=10 value="${main.itemNO}" disabled></td>
-      <td class="th_5"><input type="text" size=20 value="${main.item_Name}" disabled></td>
-      <td class="th_6"><input type="text" size=10 value="${main.stockUnit}" disabled></td>
-      <td class="th_7"><input type="text" size=10 value="${main.rd_Quantity}" disabled></td>
-      <td class="th_8"><input type="text" size=10 value="${main.rd_Status}" disabled></td>
+      <td class="th_5"><input type="text" size=10 value="${main.item_Name}" disabled></td>
+      <td class="th_6"><input type="text" size=4 value="${main.stockUnit}" disabled></td>
+      <td class="th_7"><input type="text" size=4 value="${main.rd_Quantity}" disabled></td>
+      <td class="th_8"><input type="text" size=4 value="${main.rd_Status}" disabled></td>
     </tr>
   </c:forEach>
   </form>
   	<tr align="center">
    	<td class="td_1" style="text-align: center;"><input type="checkbox" id="up_CheckBox" style="width: 40px;"></td>
-      <td class="th_2"><input type="text" size=20 name="rd_no"></td>
-      <td class="th_3"><input type="text" size=15 name="pr_NO"></td>
-      <td class="th_4"><input type="text" size=10 name="use_Report"></td>
+      <td class="th_2"><input type="text" size=10 name="rd_no"></td>
+      <td class="th_3"><input type="date" size=6 name="pr_NO"></td>
+      <td class="th_4"><input type="date" size=6 name="use_Report"></td>
       <td class="th_4"><input type="text" size=10 name="pr_Process"></td>
-      <td class="th_5"><input type="text" size=20 name="pr_Workspace"></td>
-      <td class="th_6"><input type="text" size=10 name="pr_Date"></td>
-      <td class="th_7"><input type="text" size=10 name="itemNO"></td>
-      <td class="th_8"><input type="text" size=10 name="item_Name"></td>
+      <td class="th_5"><input type="text" size=10 name="pr_Workspace"></td>
+      <td class="th_6"><input type="text" size=4 name="pr_Date"></td>
+      <td class="th_7"><input type="text" size=4 name="itemNO"></td>
+      <td class="th_8"><input type="text" size=4 name="item_Name"></td>
     </tr>
 </table>
 </div>

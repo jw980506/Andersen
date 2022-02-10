@@ -255,8 +255,8 @@ $(function () {
    			<br>
    			<form method="post" action="${contextPath}/product/find_performance_registration.do">
             <tr>
-        		<td style="text-align: right;">지시기간 : <input type="text" id="datepicker1" name="beginDate" style="background-color:#a9e2f8;">
-        		 ~ <input type="text" id="datepicker2" name="endDate" style="background-color:#a9e2f8;"></td>
+        		<td style="text-align: right;">지시기간 : <input type="date" id="datepicker1" name="beginDate" style="background-color:#a9e2f8;">
+        		 ~ <input type="date" id="datepicker2" name="endDate" style="background-color:#a9e2f8;"></td>
             	<td><input type="submit" value="검색" style="width: 50px;"></td>
             </tr>
            	</form>
@@ -297,41 +297,41 @@ $(function () {
  <c:forEach var="main" items="${mainList}" >     
    <tr align="center">
    	<td class="td_1" style="text-align: center;"><input type="checkbox" name="checked_rd_no" class="checked_rd_no" value="${main.rd_no}" style="width: 40px;"></td>
-      <td class="th_2"><input type="text" size=20 value="${main.rd_no}" disabled></td>
-      <td class="th_3"><input type="text" size=13 value="${main.release_Status}" disabled></td>
+      <td class="th_2"><input type="text" size=10 value="${main.rd_no}" disabled></td>
+      <td class="th_3"><input type="text" size=10 value="${main.release_Status}" disabled></td>
       <td class="th_4"><input type="text" size=10 value="${main.rd_Workspace}" disabled></td>
-      <td class="th_4"><input type="text" size=10 value="${main.rd_Date}" disabled></td>
-      <td class="th_5"><input type="text" size=15 value="${main.mr_Date}" disabled></td>
+      <td class="th_4"><input type="date" size=6 value="${main.rd_Date}" disabled></td>
+      <td class="th_5"><input type="date" size=6 value="${main.mr_Date}" disabled></td>
       <td class="th_6"><input type="text" size=10 value="${main.itemNO}" disabled></td>
       <td class="th_7"><input type="text" size=10 value="${main.item_Name}" disabled></td>
-      <td class="th_8"><input type="text" size=10 value="${main.stockUnit}" disabled></td>
+      <td class="th_8"><input type="text" size=4 value="${main.stockUnit}" disabled></td>
       <td class="th_9"><input type="text" size=10 value="${main.rd_Quantity}" disabled></td>
       <td class="th_10"><input type="text" size=10 value="${main.pr_Quantity}" disabled></td>
       <td class="th_11"><input type="text" size=10 value="${main.pr_Residual_Quantity}" disabled></td>
-      <td class="th_12"><input type="text" size=10 value="${main.rd_Status}" disabled></td>
+      <td class="th_12"><input type="text" size=4 value="${main.rd_Status}" disabled></td>
       <td class="th_13"><input type="text" size=10 value="${main.work_Scope}" disabled></td>
       <c:if test="${main.rd_Test == '0'}">
-      <td class="th_14"><input type="text" size=10 value="무검사" disabled></td></c:if>
+      <td class="th_14"><input type="text" size=4 value="무검사" disabled></td></c:if>
       <c:if test="${main.rd_Test == '1'}">
-      <td class="th_14"><input type="text" size=10 value="검사" disabled></td></c:if>
+      <td class="th_14"><input type="text" size=4 value="검사" disabled></td></c:if>
   </c:forEach>
   </form>
   	<tr align="center">
    	<td class="td_1" style="text-align: center;"><input type="checkbox" style="width: 40px;"></td>
-      <td class="th_2"><input type="text" size=20 name="rd_no"></td>
-      <td class="th_3"><input type="text" size=13 name="release_Status"></td>
+      <td class="th_2"><input type="text" size=10 name="rd_no"></td>
+      <td class="th_3"><input type="text" size=10 name="release_Status"></td>
       <td class="th_4"><input type="text" size=10 name="rd_Workspace"></td>
-      <td class="th_4"><input type="text" size=10 name="rd_Date"></td>
-      <td class="th_5"><input type="text" size=15 name="mr_Date"></td>
+      <td class="th_4"><input type="date" size=6 name="rd_Date"></td>
+      <td class="th_5"><input type="date" size=6 name="mr_Date"></td>
       <td class="th_6"><input type="text" size=10 name="itemNO"></td>
       <td class="th_7"><input type="text" size=10 name="item_Name"></td>
-      <td class="th_8"><input type="text" size=10 name="stockUnit"></td>
+      <td class="th_8"><input type="text" size=4 name="stockUnit"></td>
       <td class="th_9"><input type="text" size=10 name="rd_Quantity"></td>
       <td class="th_10"><input type="text" size=10 name="pr_Quantity"></td>
       <td class="th_11"><input type="text" size=10 name="pr_Residual_Quantity"></td>
-      <td class="th_12"><input type="text" size=10 name="rd_Status"></td>
+      <td class="th_12"><input type="text" size=4 name="rd_Status"></td>
       <td class="th_13"><input type="text" size=10 name="work_Scope"></td>
-      <td class="th_14"><input type="text" size=10 name="rd_Test"></td>
+      <td class="th_14"><input type="text" size=4 name="rd_Test"></td>
     </tr>
 </table>
 </div>
@@ -357,31 +357,31 @@ $(function () {
                 <c:forEach var="down" items="${downList}" > 
                 <tr>
 	                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
-	                <td ><input type="text" size=20 name="pr_NO" value="${down.pr_NO}" disabled></td>
-	                <td ><input type="text" size=13 name="materials_Availability" value="${down.materials_Availability}" disabled></td><!--  -->
-	                <td ><input type="text" size=15 name="pr_Date" value="${down.pr_Date}"></td><!-- 실적일 -->
+	                <td ><input type="text" size=10 name="pr_NO" value="${down.pr_NO}" disabled></td>
+	                <td ><input type="text" size=10 name="materials_Availability" value="${down.materials_Availability}" disabled></td><!--  -->
+	                <td ><input type="date" size=6 name="pr_Date" value="${down.pr_Date}"></td><!-- 실적일 -->
 	                <td ><input type="text" size=10 name="rd_Process" value="${down.pr_Process}"></td><!-- 공정 -->
 	                <td ><input type="text" size=10 name="rD_Workspace" value="${down.pr_Workspace}"></td><!-- 작업장 -->
 	                <td ><input type="text" size=10 name="transfer_Separation" value="${down.transfer_Separation}"></td><!--  -->
 	                <td ><input type="text" size=10 name="pr_OrNot" value="${down.pr_OrNot}"></td><!--  -->
 	                <td ><input type="text" size=10 name="pr_Quantity" value="${down.pr_Quantity}"></td><!--  -->
-	                <td ><input type="text" size=10 name="rd_Test" value="${down.rd_Test}"></td><!--  -->
+	                <td ><input type="text" size=4 name="rd_Test" value="${down.rd_Test}"></td><!--  -->
 	                <td ><input type="text" size=10 name="pr_Name" value="${down.pr_Name}"></td><!--  -->
-	                <td ><input type="text" size=20 name="warehouse_Process" value="${down.warehouse_Process}"></td><!--  -->
-	                <td ><input type="text" size=20 name="place_Workspace" value="${down.place_Workspace}"></td><!--  -->
+	                <td ><input type="text" size=15 name="warehouse_Process" value="${down.warehouse_Process}"></td><!--  -->
+	                <td ><input type="text" size=17 name="place_Workspace" value="${down.place_Workspace}"></td><!--  -->
                 </tr>
                 </c:forEach>
                 <tr>
 	                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
-	                <td ><input type="text" size="20" name="pr_NO" disabled></td>
-	                <td ><input type="text" size=13 name="materials_Availability" disabled></td><!--  -->
-	                <td class="td_7"><input type="text" size=15 name="pr_Date" ></td><!-- 실적일 -->
+	                <td ><input type="text" size=10 name="pr_NO" disabled></td>
+	                <td ><input type="text" size=10 name="materials_Availability" disabled></td><!--  -->
+	                <td class="td_7"><input type="date" size=6 name="pr_Date" ></td><!-- 실적일 -->
 	                <td class="td_8"><input type="text" size=10 name="pr_Process" ></td><!--  -->
 	                <td class="td_9"><input type="text" size=10 name="pr_Workspace" ></td><!--  -->
 	                <td class="td_10"><input type="text" size=10 name="transfer_Separation" ></td><!--  -->
 	                <td class="td_10"><input type="text" size=10 name="pr_OrNot" ></td><!--  -->
 	                <td class="td_10"><input type="text" size=10 name="pr_Quantity" ></td><!--  -->
-	                <td class="td_10"><input type="text" size=10 name="rd_Test" >
+	                <td class="td_10"><input type="text" size=4 name="rd_Test" >
 	                	<!-- <select>
                             <option value="">선택</option>
                             <option value="o">검사</option>
@@ -389,8 +389,8 @@ $(function () {
                         </select> -->
 	                </td><!--  -->
 	                <td class="td_10"><input type="text" size=10 name="pr_Name"></td><!--  -->
-	                <td class="td_10"><input type="text" size=20 name="warehouse_Process" ></td><!--  -->
-	                <td class="td_10"><input type="text" size=20 name="place_Workspace" ></td><!--  -->
+	                <td class="td_10"><input type="text" size=15 name="warehouse_Process" ></td><!--  -->
+	                <td class="td_10"><input type="text" size=17 name="place_Workspace" ></td><!--  -->
                 </tr>
             </table>
         </div>

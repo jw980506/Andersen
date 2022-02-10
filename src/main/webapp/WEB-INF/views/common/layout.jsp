@@ -18,7 +18,9 @@
       }
       
       #header {
-        width: 100%;
+        text-align:center;
+        height:150px;
+        position: fixed;
       }
       
       #sidebar-left {
