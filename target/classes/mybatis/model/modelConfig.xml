@@ -19,5 +19,8 @@
 		<typeAlias type="com.andersen.mes.product.direction_deadline.vo.Direction_DeadlineVO"  alias="direction_deadlineVO" />
 		<typeAlias type="com.andersen.mes.product.goods_warehouse.vo.Goods_WarehouseVO"  alias="goods_warehouseVO" />
 		<typeAlias type="com.andersen.mes.product.material_release.vo.Material_ReleaseVO"  alias="material_releaseVO" />
+		
+		<typeAlias type="com.andersen.mes.main.board.vo.ArticleVO"  alias="articleVO" />
+		<typeAlias type="com.andersen.mes.main.board.vo.ImageVO"  alias="imageVO" />
 	</typeAliases>
 </configuration>
