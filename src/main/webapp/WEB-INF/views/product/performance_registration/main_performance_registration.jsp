@@ -8,7 +8,7 @@
 %>    
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -190,27 +190,68 @@ $(function () {
 </head>
 <style>
 
-	.div1{
-         padding-left: 25px;
-         font-size: 18px;
-         text-align:center;
+	.div_all {
+		padding: 0px 50px 0px 50px;
+	}
+	.div_div {
+		height: 100px;
+	}
+	.div_top {
+		display : flex;
+		padding-top : 50px;
+        font-size: 20px;
+        height: 20px;
     }
-     #bt_1{
-            position: absolute;
-            right: 0;
-            padding-right: 150px;
-            text-align:center;
-            border: 0;
-            
+    .top_bt {
+    	padding-top : 20px;
+    	position: relative;
+        right: 0;
+        padding-right: 150px;
+    }
+        .top_bt .bt_01 {
+            position:absolute;
+            right:166px;
         }
-     #bt_2{
-            padding-left: 5px;
+        .top_bt .bt_02 {
+            position:absolute;
+            right:114px;
         }
-        
+        .top_bt .bt_03 {
+            position:absolute;
+            right:62px;
+        }
+        .top_bt .bt_04 {
+        	position:absolute;
+            right:10px;
+        }
+        .tb_all {
+        	padding-left : 100px;
+        }
+        .tb1{
+            float: left;
+            width: 1000px;          
+        }
+        .tb2{
+        	padding-top: 150px;
+            width: 500px;
+        }
+        .th_1{
+            width: 50px;
+        }
+        .th_3 b {
+        }
+        .th2_1{         
+            width: 50px;
+        }
+        #RD1 {
+        	 width: auto;
+            display: block;
+        }
 </style>
 <body>
-
-		<div class="div1">
+	<div class="div_all">
+		<div class="div_div">
+			<div class="div_top">
    			<br>
    			<form method="post" action="${contextPath}/product/find_performance_registration.do">
             <tr>
@@ -219,19 +260,22 @@ $(function () {
             	<td><input type="submit" value="검색" style="width: 50px;"></td>
             </tr>
            	</form>
-        </div><br>
+        </div>
+        <br>
         
-        <div id="bt_1">
-        
+        <div class="top_bt">
         <form name="search">
-            <input type="submit" id="search" value="조회" style="width: 50px;"/>
-            <input type="button" id="add" value="등록" style="width: 50px;" />
-          	<input type="button" id="mod" value="수정" style="width: 50px;" />
-          	<input type="button" id="rem" value="삭제" style="width: 50px;" />
-        </div><br><br>
+            <input type="submit" id="search" value="조회" class="bt_01" style="width: 50px;"/>
+            <input type="button" id="add" value="등록" class="bt_02" style="width: 50px;" />
+          	<input type="button" id="mod" value="수정" class="bt_03" style="width: 50px;" />
+          	<input type="button" id="rem" value="삭제" class="bt_04" style="width: 50px;" />
+        </div>
+       </div>
+        <br><br><br>
         
+       <div class="tb_all">
 <div class="tb1"> 
-	<table  id="RD1" cellspacing="10" align="center"  width="80%">
+	<table  id="RD1" cellspacing="15" align="center" >
 	    <tr class="tbg" align="center" bgcolor="#a9e2f8">
 	      <th class="th_1">항목</th>
 	      <th class="th_2"><b>작업지시번호</b></th>
@@ -254,7 +298,7 @@ $(function () {
    <tr align="center">
    	<td class="td_1" style="text-align: center;"><input type="checkbox" name="checked_rd_no" class="checked_rd_no" value="${main.rd_no}" style="width: 40px;"></td>
       <td class="th_2"><input type="text" size=20 value="${main.rd_no}" disabled></td>
-      <td class="th_3"><input type="text" size=10 value="${main.release_Status}" disabled></td>
+      <td class="th_3"><input type="text" size=13 value="${main.release_Status}" disabled></td>
       <td class="th_4"><input type="text" size=10 value="${main.rd_Workspace}" disabled></td>
       <td class="th_4"><input type="text" size=10 value="${main.rd_Date}" disabled></td>
       <td class="th_5"><input type="text" size=15 value="${main.mr_Date}" disabled></td>
@@ -275,7 +319,7 @@ $(function () {
   	<tr align="center">
    	<td class="td_1" style="text-align: center;"><input type="checkbox" style="width: 40px;"></td>
       <td class="th_2"><input type="text" size=20 name="rd_no"></td>
-      <td class="th_3"><input type="text" size=10 name="release_Status"></td>
+      <td class="th_3"><input type="text" size=13 name="release_Status"></td>
       <td class="th_4"><input type="text" size=10 name="rd_Workspace"></td>
       <td class="th_4"><input type="text" size=10 name="rd_Date"></td>
       <td class="th_5"><input type="text" size=15 name="mr_Date"></td>
@@ -313,8 +357,8 @@ $(function () {
                 <c:forEach var="down" items="${downList}" > 
                 <tr>
 	                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
-	                <td ><input type="text" size="20" name="pr_NO" value="${down.pr_NO}" disabled></td>
-	                <td ><input type="text" size=10 name="materials_Availability" value="${down.materials_Availability}" disabled></td><!--  -->
+	                <td ><input type="text" size=20 name="pr_NO" value="${down.pr_NO}" disabled></td>
+	                <td ><input type="text" size=13 name="materials_Availability" value="${down.materials_Availability}" disabled></td><!--  -->
 	                <td ><input type="text" size=15 name="pr_Date" value="${down.pr_Date}"></td><!-- 실적일 -->
 	                <td ><input type="text" size=10 name="rd_Process" value="${down.pr_Process}"></td><!-- 공정 -->
 	                <td ><input type="text" size=10 name="rD_Workspace" value="${down.pr_Workspace}"></td><!-- 작업장 -->
@@ -330,7 +374,7 @@ $(function () {
                 <tr>
 	                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
 	                <td ><input type="text" size="20" name="pr_NO" disabled></td>
-	                <td ><input type="text" size=10 name="materials_Availability" disabled></td><!--  -->
+	                <td ><input type="text" size=13 name="materials_Availability" disabled></td><!--  -->
 	                <td class="td_7"><input type="text" size=15 name="pr_Date" ></td><!-- 실적일 -->
 	                <td class="td_8"><input type="text" size=10 name="pr_Process" ></td><!--  -->
 	                <td class="td_9"><input type="text" size=10 name="pr_Workspace" ></td><!--  -->
@@ -350,5 +394,7 @@ $(function () {
                 </tr>
             </table>
         </div>
+        </div>
+	</div>
 </body>
 </html>

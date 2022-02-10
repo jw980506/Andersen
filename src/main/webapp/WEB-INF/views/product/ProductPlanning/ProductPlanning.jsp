@@ -84,11 +84,14 @@ $(function(){
 	.div_all{
 		padding : 0px 50px 0px 50px;
 	}
-    	.div1{
+	.div_div {
+		height: 100px;
+	}
+    	.div_top {
+    	display : flex;
            	padding-top : 50px;
-        	padding : left;
             font-size: 20px;
-            width : 370px;
+            height: 20px;
        	}
         
         #RD1 {
@@ -100,25 +103,26 @@ $(function(){
             display: block;
         }
 
-        .bt_1{
+        .top_bt{
+        padding-top : 20px;
             position: relative;
             right: 0;
             padding-right: 150px;
         }
         
-        .bt_1 .bt_01 {
+        .top_bt .bt_01 {
             position:absolute;
             right:166px;
         }
-        .bt_1 .bt_02 {
+        .top_bt .bt_02 {
             position:absolute;
             right:114px;
         }
-        .bt_1 .bt_03 {
+        .top_bt .bt_03 {
             position:absolute;
             right:62px;
         }
-        .bt_1 .bt_04 {
+        .top_bt .bt_04 {
             position:absolute;
             right:10px;
         }
@@ -143,10 +147,9 @@ $(function(){
         }
  </style>
  <body>
- 1페이지
      <div class = "div_all">
-		<div class="div1">
-			<table cellspacing="15">
+     	<div class="div_div">
+		<div class="div_top">
 				<form method = "post" name="form" id="form">
 				<tr>
         			<td style="text-align: right;">품번</td>
@@ -154,15 +157,17 @@ $(function(){
         			<td><input type="button" id="search_by_itemNO" value="검색"></td> <!-- 품번 또는 작업예정일로 조회하는 버튼 "search" -->
         		</tr>
         		</form>
-        	</table>
     	</div>
-    		<div class="bt_1">
+    	<br />
+    	
+    		<div class="top_bt">
     		<form method="post" name="form">
 	        	<input type="button" id="search" value="조회" style="width: 50px;" class="bt_01" />
         		<button type="button" disabled='disabled' style="width: 50px;" class="bt_02">등록</button>
         		<button type="button" disabled='disabled' style="width: 50px;" class="bt_03">수정</button>
         		<button type="button" disabled='disabled' style="width: 50px;" class="bt_04">삭제</button>
 	    	</form>
+	    	</div>
 	    	</div>
     		<br><br><br>
 		

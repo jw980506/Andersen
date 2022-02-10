@@ -10,8 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 출력창</title>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type ="text/javascript">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type ="text/javascript">
 
 $(function(){
 	$("#search").click(function() {
@@ -169,123 +169,178 @@ $(function(){
         
 	});
 });
-	
 </script>
-</head>
-<style>
 
-	.div1{
-         padding-left: 25px;
-         font-size: 18px;
-         text-align:center;
+<style type="text/css">
+
+	.div_all {
+		padding: 0px 50px 0px 50px;
+	}
+	.div_div {
+		height: 100px;
+	}
+	.div_top {
+		display : flex;
+		padding-top : 50px;
+        font-size: 20px;
+        height: 20px;
     }
-     #bt_1{
-            position: absolute;
-            right: 0;
-            padding-right: 150px;
-            text-align:center;
-            border: 0;
-            
+    .top_bt {
+    	padding-top : 20px;
+    	position: relative;
+        right: 0;
+        padding-right: 150px;
+    }
+    	.top_bt .bt_01 {
+    		position:absolute;
+       		right:228px;
+   		 }
+        .top_bt .bt_02 {
+            position:absolute;
+            right:166px;
         }
-     #bt_2{
-            padding-left: 5px;
+        .top_bt .bt_03 {
+            position:absolute;
+            right:114px;
         }
-        
+        .top_bt .bt_04 {
+            position:absolute;
+            right:62px;
+        }
+        .top_bt .bt_05 {
+        	position:absolute;
+            right:10px;
+        }
+        .tb_all {
+        	padding-left : 100px;
+        }
+        .tb1{
+            float: left;
+            width: 1000px;          
+        }
+        .tb2{
+        	padding-top: 150px;
+            width: 500px;
+        }
+        .th_1{
+            width: 50px;
+        }
+        .th2_1{         
+            width: 50px;
+        }
+        #RD1 {
+        	 width: auto;
+            display: block;
+        }
+        #RD2 {
+        	 width: auto;
+            display: block;
+        }
 </style>
-<body>
-
-		<div class="div1">
-   			<br>
-   			<form method="post" action="${contextPath}/product/find_material_release.do">
-            <tr>
-        		<td style="text-align: right;">출고기간 : <input type="text" name="beginDate" style="background-color:#a9e2f8;">
-        		 - <input type="text" name="endDate" style="background-color:#a9e2f8;"></td>
-            	<td><input type="submit" value="검색" style="width: 50px;"></td>
-            </tr>
-           	</form>
-        </div><br>
+</head>
+<body>	
+	<div class="div_all">
+		<div class="div_div">
+			<div class="div_top">
+			<br>
+   				<form method="post" action="${contextPath}/product/find_material_release.do">
+   					<tr>
+          	  			<td style="text-align: right;">출고기간 : <input type="text" name="beginDate" style="background-color:#a9e2f8;">
+        		 		- <input type="text" name="endDate" style="background-color:#a9e2f8;"></td>
+            			<td><input type="submit" value="검색" style="width: 50px;" ></td>
+            		</tr>
+        	</div>
+        	<br>
         
-        <div id="bt_1">
-        <form name="search">
-            <input type="submit" id="search" value="조회" style="width: 50px;" />
-            <input type="submit" id="request" value="출고요청" style="width: 70px;"/>
-            <input type="button" id="add" value="등록" style="width: 50px;"/>
-          	<input type="button" id="mod" value="수정" style="width: 50px;"/>
-          	<input type="button" id="rem" value="삭제"style="width: 50px;" />
-        </div><br><br><br>
-        
-<div class="tb1"> 
-	<table  id="RD1" cellspacing="10" align="center"  width="80%">
-	    <tr class="tbg" align="center" bgcolor="#a9e2f8">
-	      <th class="th_1">항목</th>
-	      <th class="th_2"><b>출고번호</b></th>
-	      <th class="th_3"><b>출고일자</b></th>
-	      <th class="th_4"><b>출고창고</b></th>
-	      <th class="th_5"><b>출고장소</b></th>
-	      <th class="th_6"><b>공정</b></th>
-	      <th class="th_7"><b>작업장</b></th>
-	      <th class="th_8"><b>담당자</b></th>
-   	</tr>
-   
- <c:forEach var="main" items="${mainList}" >     
-   <tr align="center">
-   	<td class="td_1" style="text-align: center;"><input type="checkbox" name="checked_mr_no" id="up_CheckBox" value="${main.mr_NO}" style="width: 40px;"></td>
-      <td class="th_2"><input type="text" size=20 value="${main.mr_NO}" disabled></td>
-      <td class="th_3"><input type="text" size=10 value="${main.mr_Date}" disabled></td>
-      <td class="th_4"><input type="text" size=10 value="${main.mr_Warehouse}" disabled></td>
-      <td class="th_4"><input type="text" size=10 value="${main.mr_Place}" disabled></td>
-      <td class="th_5"><input type="text" size=20 value="${main.rd_Process}" disabled></td>
-      <td class="th_6"><input type="text" size=10 value="${main.rd_Workspace}" disabled></td>
-      <td class="th_7"><input type="text" size=10 value="${main.emp_Name}" disabled></td>
-    </tr>
-  </c:forEach>
-  </form>
-  	<tr align="center">
-   	<td class="td_1" style="text-align: center;"><input type="checkbox" id="up_CheckBox" style="width: 40px;"></td>
-      <td class="th_2"><input type="text" size=20 name="rd_no" disabled></td>
-      <td class="th_3"><input type="text" size=10 name="release_Status"></td>
-      <td class="th_4"><input type="text" size=10 name="rd_Workspace"></td>
-      <td class="th_4"><input type="text" size=10 name="rd_Date"></td>
-      <td class="th_5"><input type="text" size=20 name="mr_Date"></td>
-      <td class="th_6"><input type="text" size=10 name="itemNO"></td>
-      <td class="th_7"><input type="text" size=10 name="item_Name"></td>
-    </tr>
-</table>
-</div>
-<br><br><br>
-<div class="tb2">
-           
-            <table id="RD2" cellspacing="15" style="text-align: center;">
-                <tr class="tbg" bgcolor="#a9e2f8">
-                    <th class="th2_1">항목</th>
-                    <th>순서</th>
-                    <th>품번</th>
-                    <th>품명</th>
-                    <th>단위</th>
-                    <th>요청수량</th>
-                    <th>출고수량</th>
-                </tr>
-                <c:forEach var="down" items="${downList}" > 
-                <tr>
-	                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
-	                <td ><input type="text" size="10" name="pr_NO" value="${down.mrs_Sequence}" disabled></td>
-	                <td ><input type="text" size=10 name="materials_Availability" value="${down.itemNO}" ></td><!--  -->
-	                <td ><input type="text" size=10 name="pr_Date" value="${down.item_Name}"></td><!-- 실적일 -->
-	                <td ><input type="text" size=10 name="rd_Process" value="${down.stockUnit}"></td><!-- 공정 -->
-	                <td ><input type="text" size=10 name="rD_Workspace" value="${down.rr_Quantity}"></td><!-- 작업장 -->
-	                <td ><input type="text" size=10 name="transfer_Separation" value="${down.mrs_Quantity}"></td><!--  -->
-                </tr>
-                </c:forEach>
-                <tr>
-	                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
-	                <td ><input type="text" size="10" name="pr_NO" disabled></td>
-	                <td ><input type="text" size=10 name="materials_Availability" ></td><!--  -->
-	                <td class="td_7"><input type="text" size=10 name="pr_Date" ></td><!-- 실적일 -->
-	                <td class="td_8"><input type="text" size=10 name="pr_Process" ></td><!--  -->
-	                <td class="td_9"><input type="text" size=10 name="pr_Workspace" ></td><!--  -->
-	                <td class="td_10"><input type="text" size=10 name="transfer_Separation" ></td><!--  -->  
-                </tr>
-            </table>
+        	<div class="top_bt">
+        		<form name="search">
+            		<input type="submit" id="search" value="조회" style="width: 50px;" class="bt_01" />
+            		<input type="submit" id="request" value="출고요청" style="width: 60px;" class="bt_02"/>
+            		<input type="button" id="add" value="등록" style="width: 50px;" class="bt_03"/>
+          			<input type="button" id="mod" value="수정" style="width: 50px;" class="bt_04"/>
+          			<input type="button" id="rem" value="삭제"style="width: 50px;" class="bt_05"/>
+          		</form>
+        	</div>
         </div>
+        
+        <br><br><br>
+        
+        <div class="tb_all">
+			<div class="tb1"> 
+				<table  id="RD1" cellspacing="15" align="center">
+	    			<tr class="tbg" align="center" bgcolor="#a9e2f8">
+	      				<th class="th_1">항목</th>
+	      				<th class="th_2"><b>출고번호</b></th>
+	      				<th class="th_3"><b>출고일자</b></th>
+	      				<th class="th_4"><b>출고창고</b></th>
+	      				<th class="th_5"><b>출고장소</b></th>
+	      				<th class="th_6"><b>공정</b></th>
+	      				<th class="th_7"><b>작업장</b></th>
+	      				<th class="th_8"><b>담당자</b></th>
+   					</tr>
+   
+ 				<c:forEach var="main" items="${mainList}" >
+ 					<tr align="center">
+   						<td class="td_1" style="text-align: center;"><input type="checkbox" name="checked_mr_no" id="up_CheckBox" value="${main.mr_NO}" style="width: 40px;"></td>
+      					<td class="th_2"><input type="text" size=20 value="${main.mr_NO}" disabled></td>
+      					<td class="th_3"><input type="text" size=10 value="${main.mr_Date}" disabled></td>
+      					<td class="th_4"><input type="text" size=10 value="${main.mr_Warehouse}" disabled></td>
+      					<td class="th_4"><input type="text" size=10 value="${main.mr_Place}" disabled></td>
+      					<td class="th_5"><input type="text" size=20 value="${main.rd_Process}" disabled></td>
+      					<td class="th_6"><input type="text" size=10 value="${main.rd_Workspace}" disabled></td>
+      					<td class="th_7"><input type="text" size=10 value="${main.emp_Name}" disabled></td>
+    				</tr>
+  				</c:forEach>
+  		</form>
+  					<tr align="center">
+   						<td class="td_1" style="text-align: center;"><input type="checkbox" id="up_CheckBox" style="width: 40px;"></td>
+      					<td class="th_2"><input type="text" size=20 name="rd_no" disabled></td>
+      					<td class="th_3"><input type="text" size=10 name="release_Status"></td>
+      					<td class="th_4"><input type="text" size=10 name="rd_Workspace"></td>
+      					<td class="th_4"><input type="text" size=10 name="rd_Date"></td>
+      					<td class="th_5"><input type="text" size=20 name="mr_Date"></td>
+      					<td class="th_6"><input type="text" size=10 name="itemNO"></td>
+      					<td class="th_7"><input type="text" size=10 name="item_Name"></td>
+    				</tr>
+				</table>
+			</div>
+		
+		<br><br><br>
+
+			<div class="tb2">
+           		<table id="RD2" cellspacing="15" style="text-align: center;">
+           	 		<tr class="tbg" bgcolor="#a9e2f8">
+           	 			<th class="th2_1">항목</th>
+                    	<th>순서</th>
+                    	<th>품번</th>
+                    	<th>품명</th>
+                    	<th>단위</th>
+                    	<th>요청수량</th>
+                    	<th>출고수량</th>
+                	</tr>
+                	<c:forEach var="down" items="${downList}" > 
+                	<tr>
+		                <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
+		                <td ><input type="text" size="10" name="pr_NO" value="${down.mrs_Sequence}" disabled></td>
+	    	            <td ><input type="text" size=10 name="materials_Availability" value="${down.itemNO}" ></td><!--  -->
+	        	        <td ><input type="text" size=10 name="pr_Date" value="${down.item_Name}"></td><!-- 실적일 -->
+	            	    <td ><input type="text" size=10 name="rd_Process" value="${down.stockUnit}"></td><!-- 공정 -->
+	                	<td ><input type="text" size=10 name="rD_Workspace" value="${down.rr_Quantity}"></td><!-- 작업장 -->
+	                	<td ><input type="text" size=10 name="transfer_Separation" value="${down.mrs_Quantity}"></td><!--  -->
+	                </tr>
+    	            </c:forEach>
+        	        <tr>
+	        	        <td style="text-align: center;"><input type="checkbox" id="down_CheckBox" style="width: 40px;"></td>
+	                	<td ><input type="text" size="10" name="pr_NO" disabled></td>
+		                <td ><input type="text" size=10 name="materials_Availability" ></td><!--  -->
+		                <td class="td_7"><input type="text" size=10 name="pr_Date" ></td><!-- 실적일 -->
+	    	            <td class="td_8"><input type="text" size=10 name="pr_Process" ></td><!--  -->
+	        	        <td class="td_9"><input type="text" size=10 name="pr_Workspace" ></td><!--  -->
+	            	    <td class="td_10"><input type="text" size=10 name="transfer_Separation" ></td><!--  -->  
+                	</tr>
+            	</table>
+        	</div>
+    	</div>
+	</div>
 </body>
 </html>

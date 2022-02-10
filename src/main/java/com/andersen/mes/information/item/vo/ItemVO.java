@@ -1,5 +1,8 @@
 package com.andersen.mes.information.item.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component("itemVO")
 public class ItemVO {
 
 	private String itemNo; 
